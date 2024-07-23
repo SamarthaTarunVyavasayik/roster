@@ -44,4 +44,31 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function roles(){
+        return $this->hasMany('App\Models\UserRole');
+    }
+
+    public function hasRole($role_name){
+        $roles = $this->roles()->get();
+        $role = \App\Models\Role::where('name',$role_name)->first();
+        $role_id = null;
+        if($role){
+            $role_id = $role->id;
+        }
+        foreach($roles as $r){
+            if($role_id == $r->role_id)
+            return true;
+        }
+        return false;
+    }
+    public function userrolename($user_id){
+        $role = UserRole::where('user_id',$user_id)->first();
+        if(!empty($role)){
+        $role_details = Role::find($role->role_id);
+        return $role_details->name;
+        }
+    }
+
+
 }
