@@ -19,5 +19,10 @@ class RoleSeeder extends Seeder
                 'name'=>'admin'
             ]
         );
+        DB::table('roles')->insert(
+            [
+                'name'=>'Contributor'
+            ]
+        );
     }
 }

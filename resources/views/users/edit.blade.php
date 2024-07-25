@@ -65,11 +65,19 @@
                   <label class="col-md-8 col-form-label text-md-right" for="input-password-confirmation">{{ __('Role') }}</label>
                   </div>
                   <div class="col-md-6">
-			@php $user_role_id = $user->userrole($user->id); @endphp
-                      <select class="form-control" name="user_role" id="input-user-role" />
+			@php 
+			//$user_role_id = $user->userrole($user->id); 
+			$user_roles = $user->roles;
+			$user_role_ids = [];
+			foreach($user_roles as $r){
+				$user_role_ids[] = $r->role_id;
+			}
+			$roles = \App\Models\Role::all();
+			@endphp
+                      <select name="user_role[]" id="input-user-role" multiple/>
 			<option value="">Select Role</option>
 			@foreach($roles as $role)
-				<option value="{{ $role->id }}" @if($role->id == $user_role_id) selected @endif>{{ ucfirst($role->name) }}</option>
+				<option value="{{ $role->id }}" @if(in_array($role->id, $user_role_ids)) selected @endif>{{ ucfirst($role->name) }}</option>
 			@endforeach
 			</select>
                   </div>

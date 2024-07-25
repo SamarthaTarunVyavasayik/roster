@@ -21,6 +21,7 @@ return new class extends Migration
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
+            $table->timestamps();
         });
 
         //add foreign keys

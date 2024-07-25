@@ -72,14 +72,7 @@ class UserController extends Controller
         return view('users.edit', ['user'=>$user, 'roles'=>$roles]);
     }
 
-    /**
-     * Update the specified user in storage
-     *
-     * @param  \App\Http\Requests\UserRequest  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(UserRequest $request, User  $user)
+    public function update(Request $request, User  $user)
     {
         $hasPassword = $request->get('password');
         $user->update(
@@ -89,14 +82,17 @@ class UserController extends Controller
 	if(!empty($request->user_role)){
 		$user_details = User::where('email',$request->email)->first();
 		$user_id = $user_details->id;
-		$role_id = $request->user_role;
-		$role_update = UserRole::where('user_id',$user_id)->first();
-		if(empty($role_update)){
-			$role_update = new UserRole();	
+		$role_ids = $request->user_role;
+		// first remove all roles
+		UserRole::where('user_id', $user_id)->delete();	
+		// then add
+		foreach($role_ids as $r_i){
+		if(empty($r_i)) continue;
+		$user_role = new UserRole();
+		$user_role->user_id = $user_id;
+		$user_role->role_id = $r_i;
+		$user_role->save();
 		}
-		$role_update->user_id = $user_id;
-		$role_update->role_id = $role_id;
-		$role_update->save();
 	}
         return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
     }

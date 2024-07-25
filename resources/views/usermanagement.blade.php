@@ -89,7 +89,7 @@ function randomString(length) {
                             <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Role (if any)</th>
+                            <th>Role[s]</th>
                             <th>Created Date</th>
                             <th class="text-right">Actions</th>
                             </tr>

@@ -63,11 +63,18 @@ class User extends Authenticatable
         return false;
     }
     public function userrolename($user_id){
+	$roles = $this->roles;
+	$role_names = [];
+	foreach($roles as $r){
+		$role_names[] = $r->role->name;
+	}
+	return implode(",", $role_names);
+	/*
         $role = UserRole::where('user_id',$user_id)->first();
         if(!empty($role)){
         $role_details = Role::find($role->role_id);
         return $role_details->name;
-        }
+	*/
     }
 
 

@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth', 'verified', Admin::class]], function () {
         Route::resource('user', UserController::class, ['except' => ['show']]);
 	/*
         Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -30,6 +30,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 });
 
 
-Route::get('/admin/usermanagement', [UserController::class, 'index'])->middleware(Admin::class);
+// administration routes
+Route::group(['middleware'=>[Admin::class], 'prefix'=>'admin'], function(){
+	Route::get('usermanagement', [UserController::class, 'index'])->name('usermanagement');
+});
 
 require __DIR__.'/auth.php';
