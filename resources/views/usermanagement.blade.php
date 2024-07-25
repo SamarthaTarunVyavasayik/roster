@@ -15,7 +15,7 @@ $(document).ready(function() {
 function showDeleteDialog(user_id){
         str = randomString(6);
         $('#text_captcha').text(str);
-        $('#hidden_captcha').text(str);
+        $('#hidden_captcha').val(str);
         $('#delete_user_id').val(user_id);
         deldialog = $( "#deletedialog" ).dialog({
                 title: 'Are you sure ?',
@@ -111,8 +111,9 @@ function randomString(length) {
                             </td>    
                         </tr>
 	    <div id="deletedialog" style="display:none;">
-                <form name="deletedoc" method="post" action="/admin/user/delete">
+                <form name="deletedoc" method="post" action="{{ URL::to('/user/destroy') }}">
                 @csrf
+		@method('DELETE')
                 <p>Enter <span id="text_captcha"></span> to delete</p>
                 <input type="text" name="delete_captcha" value="" />
                 <input type="hidden" id="hidden_captcha" name="hidden_captcha" value="" />

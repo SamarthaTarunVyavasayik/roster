@@ -97,23 +97,6 @@ class UserController extends Controller
         return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
     }
 
-    public function autoComplete(Request $request){
-	$users = \App\User::where("email","LIKE","%{$request->input('term')}%")->get();
-
-	$results = array();
-	foreach($users as $u){
-		$results[] = ['value' => $u->email];
-	}
-	if(count($results)){
-        return response()->json($results);
-	}
-	else{
-	return ['value'=>'No Result Found'];
-	}
-    }
-
-
-
     /**
      * Remove the specified user from storage
      *
@@ -122,16 +105,16 @@ class UserController extends Controller
      */
     public function destroy(Request $request)
     {
-	$user = \App\User::findOrFail($request->user_id);
+	$user = \App\Models\User::findOrFail($request->user_id);
 	if(!empty($request->delete_captcha) &&
-                $request->delete_captcha == $request->delete_captcha){
+                $request->delete_captcha == $request->hidden_captcha){
         	$user->delete();
 		Session::flash('alert-success', 'User successfully deleted.');
-        	return redirect()->route('user.index');
+        	return redirect('/admin/usermanagement');
         }
 	else{
 		Session::flash('alert-danger', 'Please fill Captcha');
-        	return redirect('/user');
+        	return redirect('/admin/usermanagement');
         }
     }
 }
