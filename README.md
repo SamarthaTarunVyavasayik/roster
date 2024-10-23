@@ -5,6 +5,7 @@ Coming soon
 * For every new issue, create a new branch.
 * Test your updates locally and then push the branch.
 * Create a pull request with the "main" branch here.
+* API developers need to use doc block commenting. Helps in easy documentation using scribe. More info on https://scribe.readthedocs.io/en/latest/
 
 ## Issues
 * New issues will appear in "To-Do" column of the project kan-ban board.
