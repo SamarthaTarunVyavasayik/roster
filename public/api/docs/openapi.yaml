@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: Roster
+  description: 'API documentation of this project.'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://roster.local'
+paths:
+  /api/register:
+    post:
+      summary: Register
+      operationId: register
+      description: 'This endpoint is used to register a user.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                oneOf:
+                  -
+                    description: 'Successful Regsitration'
+                    type: string
+                    example: "{\n\"data\": { user details here },\n\"access_token\": \"8|MgowQLkdpShwrb8AI9j1YAGmwnDjAOeE17XrP5nb\",\n\"token_type\": \"Bearer\"\n}"
+                  -
+                    description: 'Failed Registration'
+                    type: string
+                    example: "error {\n\"message\": \"Email is already taken.\"\n}"
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: 'John Doe'
+                email:
+                  type: string
+                  description: ''
+                  example: abc@gmail.com
+                password:
+                  type: string
+                  description: ''
+                  example: '12345678'
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: Login
+      operationId: login
+      description: 'This endpoint is used to login a user to the system.'
+      parameters: []
+      responses:
+        200:
+          description: 'Successful Login'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User Login Successful'
+                  access_token: 8|MgowQLkdpShwrb8AI9j1YAGmwnDjAOeE17XrP5nb
+                  token_type: Bearer
+                properties:
+                  message:
+                    type: string
+                    example: 'User Login Successful'
+                  access_token:
+                    type: string
+                    example: 8|MgowQLkdpShwrb8AI9j1YAGmwnDjAOeE17XrP5nb
+                  token_type:
+                    type: string
+                    example: Bearer
+        401:
+          description: 'Failed Login'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Invalid login credentials'
+                properties:
+                  message:
+                    type: string
+                    example: 'Invalid login credentials'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: ''
+                  example: ian@gmail.com
+                password:
+                  type: string
+                  description: ''
+                  example: '12345678'
+              required:
+                - email
+                - password
+      security: []
+  /api/user:
+    get:
+      summary: 'Self details'
+      operationId: selfDetails
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+tags:
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []

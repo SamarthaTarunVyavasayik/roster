@@ -19,6 +19,9 @@
                     <x-nav-link :href="route('usermanagement')" :active="request()->routeIs('usermanagement')">
                         {{ __('Users') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('orgstructure')" :active="request()->routeIs('orgstructure')">
+                        {{ __('Org Structure') }}
+                    </x-nav-link>
                     @endif
                 </div>
             </div>
@@ -78,6 +81,9 @@
             @if (Auth::user()->hasRole('admin'))
             <x-responsive-nav-link :href="route('usermanagement')" :active="request()->routeIs('usermanagement')">
                 {{ __('Users') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('orgstructure')" :active="request()->routeIs('orgstructure')">
+                {{ __('Org Structure') }}
             </x-responsive-nav-link>
             @endif
         </div>
