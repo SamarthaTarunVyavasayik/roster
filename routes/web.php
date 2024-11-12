@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth', 'verified', Admin::class]], function () {
 // administration routes
 Route::group(['middleware'=>[Admin::class], 'prefix'=>'admin'], function(){
 	Route::get('usermanagement', [UserController::class, 'index'])->name('usermanagement');
+	Route::get('org-structure', function () { return view('org-structure'); } )->name('orgstructure');
 });
 
 require __DIR__.'/auth.php';
