@@ -26,6 +26,12 @@ $('#user-look-up').autocomplete({
     },
     minLength:2,
 });
+
+$('#add-user-attribute').click( function(){
+    var attribute_html = '<div class="attribute"><input type="text" name="att_name[]" value="" placeholder="Attribute-name" /> <input type="text" name="att_val[]" value="" placeholder="Attribute-value" /></div>';
+    $(".attributes").append(attribute_html);
+});
+
 });
 </script>
  
@@ -34,15 +40,23 @@ $('#user-look-up').autocomplete({
     @csrf
     <input type="text" name="label" value="" placeholder="New position" />
     <input type="hidden" name="reports_to" value="" />
-    <button type="submit" value="Add"><i class="fa-solid fa-add"></i></button>
-    <button type="button" value="Cancel" onclick="toggleForm('addition-form', the_button_id)"><i class="fa-solid fa-cancel"></i></button>
+    <button type="submit" value="Add">Add</button>
+    <button type="button" value="Cancel" onclick="toggleForm('addition-form', the_button_id)">Cancel</button>
 </form>
 <form method="post" action="{{ route('fill_position') }}" class="hidden" id="fill-position-form">
     @csrf
     <input type="text" id="user-look-up" name="user" value="" placeholder="User look up" />
-    <input type="hidden" name="position_id" value="" />
-    <button type="submit" value="Add"><i class="fa-solid fa-add"></i></button>
-    <button type="button" value="Cancel" onclick="toggleForm('fill-position-form', the_button_id)"><i class="fa-solid fa-cancel"></i></button>
+    <input type="hidden" name="position_id" value="" /><br/>
+    <strong>Attributes</strong><button id="add-user-attribute" type="button" value="Add"><i class="fa-solid fa-add"></i></button> 
+    <div class="attributes">
+    <div class="attribute">
+    <input type="text" name="att_name[]" value="" placeholder="Attribute-name" />
+    <input type="text" name="att_val[]" value="" placeholder="Attribute-value" />
+    </div>
+    </div>
+
+    <button type="submit" value="Add">Add</button>
+    <button type="button" value="Cancel" onclick="toggleForm('fill-position-form', the_button_id)">Cancel</button>
 </form>
 <div id="hierarchies">
     @php
