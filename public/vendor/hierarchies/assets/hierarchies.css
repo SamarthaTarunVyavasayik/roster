@@ -1,0 +1,27 @@
+    details{
+        margin-left:20px;
+    }
+    .child{
+        margin-left:20px;
+    }
+    form.hidden{
+        display:none;
+    }
+
+    #hierarchies{
+        display:block;
+        position:relative;
+        border:1px #ccc solid;
+    }
+    #addition-form{
+    display:none;
+    height:100%;
+    width:100%;
+    }
+    a{
+        text-decoration:none;         
+    }
+    button{
+    margin-left:20px;
+    }
+

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1147dcf55ef9f0e7f5ca7c250e0cc40",
+    "content-hash": "87095c832a1127a2b8f1776b89d8cd86",
     "packages": [
         {
             "name": "brick/math",
@@ -134,6 +134,93 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "carving-i-t/hierarchies",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CarvingIT/hierarchies.git",
+                "reference": "f2734baf6e1acd4db08ea393a51adf5c0fb01f2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CarvingIT/hierarchies/zipball/f2734baf6e1acd4db08ea393a51adf5c0fb01f2b",
+                "reference": "f2734baf6e1acd4db08ea393a51adf5c0fb01f2b",
+                "shasum": ""
+            },
+            "require": {
+                "components/font-awesome": "^6.5",
+                "laravel/framework": "^8.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CarvingIT\\Hierarchies\\HierarchiesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CarvingIT\\Hierarchies\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ketan Kulkarni",
+                    "email": "ketan@carvingit.com"
+                }
+            ],
+            "description": "Management of organizational hierarchies in your Laravel app.",
+            "support": {
+                "issues": "https://github.com/CarvingIT/hierarchies/issues",
+                "source": "https://github.com/CarvingIT/hierarchies/tree/1.0.0"
+            },
+            "time": "2024-11-12T11:21:49+00:00"
+        },
+        {
+            "name": "components/font-awesome",
+            "version": "6.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/font-awesome.git",
+                "reference": "399200378d29bacb524c0e19318ea5ff5d74aa7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/font-awesome/zipball/399200378d29bacb524c0e19318ea5ff5d74aa7f",
+                "reference": "399200378d29bacb524c0e19318ea5ff5d74aa7f",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "styles": [
+                        "css/all.css"
+                    ],
+                    "files": [
+                        "css/all.min.css",
+                        "webfonts/*"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-4.0",
+                "MIT",
+                "OFL-1.1"
+            ],
+            "description": "Font Awesome, the iconic SVG, font, and CSS framework.",
+            "support": {
+                "issues": "https://github.com/components/font-awesome/issues",
+                "source": "https://github.com/components/font-awesome/tree/6.5.2"
+            },
+            "time": "2024-04-08T15:15:22+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
