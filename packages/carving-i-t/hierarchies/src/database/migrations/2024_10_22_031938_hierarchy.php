@@ -26,7 +26,7 @@ class Hierarchy extends Migration
             $table->id();
             $table->bigInteger('position_id');
             $table->bigInteger('user_id');
-            $table->text('attributes')->nullable();
+            $table->text('user_attributes')->nullable();
             $table->unique(['user_id', 'position_id']);
             $table->timestamps();
         });

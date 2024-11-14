@@ -67,7 +67,11 @@ $('#add-user-attribute').click( function(){
                     // users on that position
                     $position_users = '';
                     foreach($p->positionusers as $pu){
-                        $position_users .= ' ('.$pu->user->name.')
+                        $user_attr = [];
+                        foreach($pu->userAttributes() as $key => $val){
+                            $user_attr[] = $key.': '. $val;
+                        }
+                        $position_users .= ' (<a href="#" title="'.implode(" | ",$user_attr).'">'.$pu->user->name.'</a>)
                         <form method="post" onsubmit="return confirm(\'Are you sure you want to delete this position?\');" action="'.route('remove_position_user').'" style="display:inline-block;">
                         <input type="hidden" name="position_user_id" value="'.$pu->id.'" />
                         <input type="hidden" name="_token" value="'. csrf_token(). '" />

@@ -40,7 +40,7 @@ class HierarchiesController
         for($i=0; $i < count($request->att_name); $i++) {
            $attributes[$request->att_name[$i]] = $request->att_val[$i]; 
         }
-        $position_user->attributes = json_encode($attributes);
+        $position_user->user_attributes = json_encode($attributes);
         $position_user->save();
         }
         catch(\Exception $e){
