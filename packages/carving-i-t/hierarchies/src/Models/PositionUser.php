@@ -15,6 +15,6 @@ class PositionUser extends Model
     }
 
     public function userAttributes(){
-        return empty($this->user_attributes) ? [] : json_decode($this->user_attributes);
+        return empty($this->user_attributes) ? null : json_decode($this->user_attributes);
     }
 }
